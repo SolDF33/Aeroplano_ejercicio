@@ -27,9 +27,20 @@ Aunque los componentes forman parte del aeroplano, se ha optado por una relació
 Cada clase implementa un método `ToString()` que permite encapsular la información técnica de cada componente, logrando un código modular, legible y fácil de mantener.
 
 
-### 5. Diferencias de Ejecución
-En tiempo de ejecución, no hay una diferencia significativa en la velocidad de procesamiento. La diferencia clave es el ciclo de vida: en la Composición, las partes mueren con el todo, optimizando la liberación de memoria; en la Agregación, las partes sobreviven al todo, permitiendo la reutilización de objetos pero requiriendo una gestión de memoria más consciente.
----
+### 5. Diferencia en Tiempo de Ejecución: Composición vs. Agregación
+
+Desde una perspectiva de rendimiento técnico (velocidad de procesamiento), la diferencia es prácticamente inexistente. Sin embargo, la distinción fundamental ocurre en la **gestión de la memoria** y el **ciclo de vida**:
+
+* **Gestión del Ciclo de Vida:**
+    * En la **Composición**, el objeto "Todo" es responsable de la instanciación de sus "Partes". En tiempo de ejecución, cuando el objeto principal es eliminado, el recolector de basura elimina automáticamente sus componentes, optimizando la liberación de memoria de forma inmediata.
+    * En la **Agregación**, las partes tienen un ciclo de vida independiente. Al ser inyectadas desde el exterior, si el objeto principal desaparece, los componentes (los "repuestos") permanecen en memoria para ser reutilizados por otros objetos.
+
+* **Flexibilidad vs. Acoplamiento:**
+    * La **Agregación** permite una mayor flexibilidad en tiempo de ejecución, ya que permite intercambiar componentes dinámicamente sin necesidad de recrear el objeto principal.
+    * La **Composición** ofrece un acoplamiento fuerte que garantiza que el objeto siempre tenga sus partes necesarias desde el momento cero, pero a costa de una estructura más rígida.
+
+**Conclusión:** La elección no se basa en la velocidad de ejecución, sino en la necesidad de **reutilización de objetos** (Agregación) frente a la **seguridad de integridad** del objeto (Composición). 
+
 **Desarrollado por:** Sol De Francesco  
 **Materia:** Programación  
 **Año:** 2026
